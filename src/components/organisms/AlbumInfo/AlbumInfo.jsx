@@ -77,15 +77,15 @@ const distrosData = [
 
 const socialData = [
   {
-    link: "#",
+    link: "https://www.facebook.com/AnimalsOnlyBand",
     icon: "fab fa-facebook-f fa-lg",
   },
   {
-    link: "#",
+    link: "https://www.instagram.com/animalsonlyband",
     icon: "fab fa-instagram fa-lg",
   },
   {
-    link: "#",
+    link: "https://www.youtube.com/channel/UCXlAybhK47wy8k7A2EgWsxQ",
     icon: "fab fa-youtube fa-lg",
   },
 ];

@@ -2,7 +2,7 @@ import React from "react";
 
 const SocialButton = ({ link, icon }) => {
   return (
-    <a href={link} className="social_icon">
+    <a target="_blank" href={link} className="social_icon">
       <i className={icon}></i>
     </a>
   );

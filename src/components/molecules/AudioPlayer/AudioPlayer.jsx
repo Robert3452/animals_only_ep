@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import ICouldFindAPlace from "../../../assets/audios/I COULD FIND A PLACE MASTER 16 BITS.wav";
 
-const AudioPlayer = () => {
+const AudioPlayer = ({ audioTitle, audioAuthor, fullAudioDuration, audioSrc }) => {
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const progressBar = useRef();
@@ -16,11 +15,13 @@ const AudioPlayer = () => {
     }, 50);
     progressBar.current.value = 0;
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
+
   const whilePlaying = () => {
     progressBar.current.value = audioPlayer.current.currentTime;
     changePlayerCurrentTime();
     animationRef.current = requestAnimationFrame(whilePlaying);
   };
+
   const togglePlayPause = () => {
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
@@ -29,7 +30,7 @@ const AudioPlayer = () => {
       animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
       audioPlayer.current.pause();
-        cancelAnimationFrame(animationRef.current);
+      cancelAnimationFrame(animationRef.current);
     }
   };
 
@@ -45,13 +46,6 @@ const AudioPlayer = () => {
     );
   };
 
-  const calculateTime = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    const seconds = Math.floor(secs % 60);
-    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-    return `${returnedMinutes}:${returnedSeconds}`;
-  };
 
   return (
     <div className="audio_container">
@@ -71,31 +65,26 @@ const AudioPlayer = () => {
           </button>
         </div>
         <div className="player_info">
-          <span className="audio_title">I could Find a Place</span>
-          <span className="author_title">Animals Only</span>
+          <span className="audio_title">{audioTitle}</span>
+          <span className="author_title">{audioAuthor}</span>
         </div>
         <div className="player_details__duration">
-          <div className="loader hide"></div>
-          <span className="player_duration">{calculateTime(duration)}</span>
+          <span className="player_duration">{fullAudioDuration}</span>
         </div>
       </div>
-      <audio
-        id="audio_01"
-        ref={audioPlayer}
-        src={ICouldFindAPlace}
-        className="audio"
-      ></audio>
+      <audio ref={audioPlayer} src={audioSrc} className="audio"></audio>
       <div className="progressbar_container">
         <input
           ref={progressBar}
           className="progressBar"
           type="range"
-          max="100"
           min="0"
           onChange={changeRange}
         />
+    
       </div>
     </div>
+
   );
 };
 

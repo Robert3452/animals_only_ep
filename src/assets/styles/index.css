@@ -23,6 +23,7 @@ ul {
 .album_cover {
   display: flex;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .hide {
@@ -160,6 +161,7 @@ ul {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .player_details {
@@ -326,6 +328,23 @@ ul {
     width: 100px;
     text-align: center;
   }
+}
+
+.progressbar_container{
+  margin-top: 10px;
+  width: 95%;
+  margin-right:auto ;
+}
+
+.footer{
+  margin-top: 20px;
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  font-size: 2em;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .progressBar {

@@ -339,7 +339,7 @@ ul {
 .footer{
   margin-top: 20px;
   width: 100%;
-  min-height: 200px;
+  min-height: 120px;
   display: flex;
   font-size: 2em;
   justify-content: center;

@@ -347,6 +347,12 @@ ul {
   align-items: center;
 }
 
+.footer hr{
+  width: 80%;
+  margin-bottom: 20px;
+
+}
+
 .progressBar {
   --bar-bg: rgba(0, 0, 0, 0.1);
   cursor: pointer;

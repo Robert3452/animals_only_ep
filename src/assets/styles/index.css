@@ -1,0 +1,343 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Marvel", sans-serif;
+  font-size: 14px;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.album_cover {
+  display: flex;
+  width: 100%;
+}
+
+.hide{
+  display: none !important;
+}
+
+.album_cover__img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.album_cover__img img {
+  width: 100%;
+  object-fit: fill;
+}
+
+.album_cover__img__buttons {
+  display: none;
+}
+
+/* 
+    DETAILS
+ */
+
+.album_info {
+  width: 100%;
+}
+
+.social_icons {
+  width: 70%;
+  margin-top: 12px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
+}
+
+.social_icon {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  background: black;
+}
+
+.album_info__container {
+  width: 95%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.album_info__left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.album_info__left h3 {
+  font-size: 3em;
+  text-align: center;
+}
+
+.album_info__left h4 {
+  font-size: 1.4em;
+  color: gray;
+  display: inline-block;
+  margin: 8px auto;
+  font-style: italic;
+}
+
+.album_info__left h4 a {
+  text-decoration: underline 2px;
+}
+
+.album_info__left span {
+  display: inline-block;
+  margin: 8px auto;
+  font-size: 1.2em;
+}
+
+.btn_distros {
+  border-radius: 40px;
+  padding: 2px 20px;
+  text-align: start;
+  min-width: 200px;
+  border: 1px black solid;
+  font-size: 1.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.btn_distros:hover {
+  background-color: #222;
+  color: white;
+}
+
+.division {
+  width: 80%;
+  margin: auto;
+}
+
+.btn_distros i {
+  margin-right: 10px;
+}
+
+/* 
+
+    PLAYER  
+
+*/
+
+.album_info__right {
+  grid-column: span 1;
+}
+
+.playlist_container {
+  width: 90%;
+
+  margin: auto;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.audio_container {
+  margin: 10px auto ;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.player_details {
+  display: flex;
+  width: 100%;
+}
+.player_details__btn {
+  width: 20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.player__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  background: #222;
+}
+.player__btn__icon {
+  color: white;
+}
+.audio_title {
+  font-size: 1.8em;
+}
+
+.author_title {
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+.player_info {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+
+.player_details__duration {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7em;
+}
+
+.loader{
+  display: flex;
+  align-self:center ;
+  justify-self:center ;
+  border: 5px solid #f3f3f3;
+  border-radius:50%;
+  border-top: 5px solid #3498db;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin .5s linear infinite;
+  animation: spin .5s linear infinite;
+}
+
+@-webkit-keyframes spin{
+  0%{ -webkit-transform: rotate(0deg) ; }
+  100%{ -webkit-transform: rotate(360deg) ; }
+}
+
+@keyframes spin {
+  0% { -webkit-transform: rotate(0deg);}
+  100% { -webkit-transform: rotate(360deg);}
+}
+
+
+@media screen and (min-width: 768px) {
+  .division {
+    width: 90%;
+    margin: auto;
+  }
+
+  .album_cover {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    height: 350px;
+  }
+
+  .album_info__container {
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+    max-width: 900px;
+  }
+  .album_info__left {
+    grid-column: span 1;
+    align-items: flex-start;
+  }
+
+  .social_icons {
+    width: 70%;
+    margin-top: 12px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+  }
+
+  /* .album_info__left h3 {
+    text-align: start;
+    margin: unset;
+    margin: 10px 0px;
+  } */
+
+  .album_info__left span,
+  .album_info__left h4,
+  .album_info__left h3 {
+    text-align: center;
+  }
+
+  .album_info__right {
+    grid-column: span 3;
+  }
+
+  .blur_cover {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url(../img/cover_background.png);
+    background-repeat: no-repeat;
+    background-size: 105%;
+    background-position: center;
+    filter: blur(4px);
+  }
+
+  .album_cover__img {
+    border: 10px solid rgba(255, 255, 255, 0.5);
+    z-index: 12;
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .btn_distros {
+    align-items: center;
+    min-width: 150px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .btn_distros span {
+    text-align: start;
+    margin: 4px auto;
+    padding: 2px 12px;
+    width: 100px;
+    text-align: center;
+  }
+}
+
+.progressBar {
+  --bar-bg: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  --seek-before-width: 0;
+  --seek-before-color: #626262aa;
+  --knobby: #000000;
+  --selectedKnobby: #4b5a5963;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(
+    to right,
+    var(--seek-before-color) calc(var(--value) * 1%),
+    var(--bar-bg) 0
+  );
+  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 5px;
+  outline: none;
+}
+

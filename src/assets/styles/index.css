@@ -3,6 +3,7 @@
 *::before {
   margin: 0;
   padding: 0;
+  --value: 0;
 }
 
 body {
@@ -24,7 +25,7 @@ ul {
   width: 100%;
 }
 
-.hide{
+.hide {
   display: none !important;
 }
 
@@ -155,7 +156,7 @@ ul {
 }
 
 .audio_container {
-  margin: 10px auto ;
+  margin: 10px auto;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -211,29 +212,36 @@ ul {
   font-size: 1.7em;
 }
 
-.loader{
+.loader {
   display: flex;
-  align-self:center ;
-  justify-self:center ;
+  align-self: center;
+  justify-self: center;
   border: 5px solid #f3f3f3;
-  border-radius:50%;
+  border-radius: 50%;
   border-top: 5px solid #3498db;
   width: 20px;
   height: 20px;
-  -webkit-animation: spin .5s linear infinite;
-  animation: spin .5s linear infinite;
+  -webkit-animation: spin 0.5s linear infinite;
+  animation: spin 0.5s linear infinite;
 }
 
-@-webkit-keyframes spin{
-  0%{ -webkit-transform: rotate(0deg) ; }
-  100%{ -webkit-transform: rotate(360deg) ; }
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-  0% { -webkit-transform: rotate(0deg);}
-  100% { -webkit-transform: rotate(360deg);}
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
-
 
 @media screen and (min-width: 768px) {
   .division {
@@ -331,7 +339,7 @@ ul {
   appearance: none;
   background: linear-gradient(
     to right,
-    var(--seek-before-color) calc(var(--value) * 1%),
+    var(--seek-before-color) var(--value) ,
     var(--bar-bg) 0
   );
   border-radius: 10px;
@@ -340,4 +348,3 @@ ul {
   height: 5px;
   outline: none;
 }
-

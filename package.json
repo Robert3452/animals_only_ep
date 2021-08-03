@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/animals_only_ep/",
+    "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {

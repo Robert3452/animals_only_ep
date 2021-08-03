@@ -1,12 +1,12 @@
 import React from "react";
 import { AudioPlayer } from "../../molecules";
 import { DistribuitorsButton, SocialButton } from "../../atoms";
-import ICouldFindAPlace from "../../../assets/audios/i_could_find_a_place.wav";
-import SentirBien from "../../../assets/audios/sentir_bien.wav";
-import HumoLuna from "../../../assets/audios/humo_de_luna.wav";
-import Disfraz from "../../../assets/audios/disfraz.wav";
-import ThreeTimes from "../../../assets/audios/three_times.wav";
-import UnPocoMas from "../../../assets/audios/un_poco_mas.mp3";
+import ICouldFindAPlace from "../../../assets/audios/I COULD FIND A PLACE.mp3";
+import SentirBien from "../../../assets/audios/SENTIR BIEN.mp3";
+import HumoLuna from "../../../assets/audios/HUMO DE LUNA.mp3";
+import Disfraz from "../../../assets/audios/DISFRAZ.mp3";
+import ThreeTimes from "../../../assets/audios/THREE TIMES AGAIN.mp3";
+import UnPocoMas from "../../../assets/audios/UN POCO MAS.mp3";
 
 const audios = [
   {
@@ -28,7 +28,7 @@ const audios = [
     audioSrc: HumoLuna,
   },
   {
-    audioTitle: "Three times",
+    audioTitle: "Three times again",
     audioAuthor: "Animals Only",
     fullAudioDuration: "05:05",
     audioSrc: ThreeTimes,

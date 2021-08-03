@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const AudioPlayer = ({ audioTitle, audioAuthor, fullAudioDuration, audioSrc }) => {
+const AudioPlayer = ({
+  audioTitle,
+  audioAuthor,
+  fullAudioDuration,
+  audioSrc,
+}) => {
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const progressBar = useRef();
   const animationRef = useRef();
   const audioPlayer = useRef();
@@ -14,6 +20,10 @@ const AudioPlayer = ({ audioTitle, audioAuthor, fullAudioDuration, audioSrc }) =
       progressBar.current.max = seconds;
     }, 50);
     progressBar.current.value = 0;
+
+    if (audioPlayer?.current?.readyState === 4) {
+      setIsReady(true);
+    }
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
   const whilePlaying = () => {
@@ -46,13 +56,13 @@ const AudioPlayer = ({ audioTitle, audioAuthor, fullAudioDuration, audioSrc }) =
     );
   };
 
-
   return (
     <div className="audio_container">
       <div className="player_details">
         <div className="player_details__btn">
           <button
             type="button"
+            disabled={!isReady}
             id="playPause"
             onClick={togglePlayPause}
             className="player__btn"
@@ -75,16 +85,15 @@ const AudioPlayer = ({ audioTitle, audioAuthor, fullAudioDuration, audioSrc }) =
       <audio ref={audioPlayer} src={audioSrc} className="audio"></audio>
       <div className="progressbar_container">
         <input
+          disabled={!isReady}
           ref={progressBar}
           className="progressBar"
           type="range"
           min="0"
           onChange={changeRange}
         />
-    
       </div>
     </div>
-
   );
 };
 

@@ -6,25 +6,27 @@ const AudioPlayer = ({
   fullAudioDuration,
   audioSrc,
 }) => {
-  const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const progressBar = useRef();
   const animationRef = useRef();
   const audioPlayer = useRef();
 
-  useEffect(() => {
-    setTimeout(() => {
-      const seconds = Math.floor(audioPlayer.current.duration);
-      setDuration(seconds);
-      progressBar.current.max = seconds;
-    }, 50);
-    progressBar.current.value = 0;
-
-    if (audioPlayer?.current?.readyState === 4) {
+  const setReady = (audio) => {
+    if (audio.networkState === 1) {
       setIsReady(true);
     }
-  }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
+  };
+
+  useEffect(() => {
+    const seconds = Math.floor(audioPlayer.current.duration);
+    progressBar.current.max = seconds;
+    setReady(audioPlayer?.current);
+  }, [
+    audioPlayer?.current?.readyState,
+    audioPlayer?.current?.loadedmetadata,
+    audioPlayer?.current?.networkState,
+  ]);
 
   const whilePlaying = () => {
     progressBar.current.value = audioPlayer.current.currentTime;
@@ -52,7 +54,7 @@ const AudioPlayer = ({
   const changePlayerCurrentTime = () => {
     progressBar.current.style.setProperty(
       "--value",
-      `${(progressBar.current.value / duration) * 100}%`
+      `${(progressBar.current.value / audioPlayer.current?.duration) * 100}%`
     );
   };
 
@@ -62,7 +64,6 @@ const AudioPlayer = ({
         <div className="player_details__btn">
           <button
             type="button"
-            disabled={!isReady}
             id="playPause"
             onClick={togglePlayPause}
             className="player__btn"
@@ -82,11 +83,17 @@ const AudioPlayer = ({
           <span className="player_duration">{fullAudioDuration}</span>
         </div>
       </div>
-      <audio ref={audioPlayer} src={audioSrc} className="audio"></audio>
+      <audio
+        ref={audioPlayer}
+        src={audioSrc}
+        className="audio"
+        preload="metadata"
+      ></audio>
       <div className="progressbar_container">
         <input
-          disabled={!isReady}
           ref={progressBar}
+          disabled={!isReady}
+          defaultValue="0"
           className="progressBar"
           type="range"
           min="0"

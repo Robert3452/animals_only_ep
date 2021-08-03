@@ -3,7 +3,6 @@
 *::before {
   margin: 0;
   padding: 0;
-  --value: 0;
 }
 
 body {
@@ -330,13 +329,13 @@ ul {
   }
 }
 
-.progressbar_container{
+.progressbar_container {
   margin-top: 10px;
   width: 95%;
-  margin-right:auto ;
+  margin-right: auto;
 }
 
-.footer{
+.footer {
   margin-top: 20px;
   width: 100%;
   min-height: 120px;
@@ -347,29 +346,62 @@ ul {
   align-items: center;
 }
 
-.footer hr{
+.footer hr {
   width: 80%;
   margin-bottom: 20px;
-
 }
 
 .progressBar {
   --bar-bg: rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  --seek-before-width: 0;
   --seek-before-color: #626262aa;
   --knobby: #000000;
   --selectedKnobby: #4b5a5963;
   -webkit-appearance: none;
   appearance: none;
-  background: linear-gradient(
-    to right,
-    var(--seek-before-color) var(--value) ,
-    var(--bar-bg) 0
-  );
+  background: var(--bar-bg);
   border-radius: 10px;
   position: relative;
   width: 100%;
   height: 5px;
   outline: none;
+}
+.progressBar::before {
+  content: "";
+  height: 5px;
+  --seek-before-color: #626262aa;
+
+  width: var(--value);
+  background-color: var(--seek-before-color);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.progressBar::-webkit-slider-thumb {
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  background: #3498db;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.progressBar::-moz-range-thumb {
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  background: #3498db;
+  cursor: pointer;
+}
+.progressBar::-ms-thumb {
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  background: #3498db;
+  cursor: pointer;
 }

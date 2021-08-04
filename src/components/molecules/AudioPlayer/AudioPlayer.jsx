@@ -7,6 +7,7 @@ const AudioPlayer = ({
   audioSrc,
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [duration, setDuration] = useState(null);
   const [isReady, setIsReady] = useState(false);
   const progressBar = useRef();
   const animationRef = useRef();
@@ -20,8 +21,12 @@ const AudioPlayer = ({
 
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
+    setDuration(seconds);
+
     progressBar.current.max = seconds;
+    
     setReady(audioPlayer?.current);
+
   }, [
     audioPlayer?.current?.readyState,
     audioPlayer?.current?.loadedmetadata,
@@ -92,8 +97,8 @@ const AudioPlayer = ({
       <div className="progressbar_container">
         <input
           ref={progressBar}
-          disabled={!isReady}
           defaultValue="0"
+          disabled={!isReady}
           className="progressBar"
           type="range"
           min="0"
